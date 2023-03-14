@@ -33,7 +33,7 @@
                 "acceptablePropertyTypes": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/definitions/reference"
+                    "$ref": "https://raw.githubusercontent.com/coolwind0202/idobata-animation-schema/main/plugin.schema.json/definitions/reference"
                   }
                 },
                 "acceptableDrawingMethods": {
