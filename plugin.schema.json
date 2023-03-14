@@ -33,97 +33,79 @@
                 "acceptablePropertyTypes": {
                   "type": "array",
                   "items": {
-                    "type": "object",
-                    "properties": {
-                      "name": {
-                        "type": "string"
-                      },
-                      "displayName": {
-                        "type": "string"
-                      },
-                      "description": {
-                        "type": "string"
-                      },
-                      "icon": {
-                        "type": "string"
-                      },
-                      "value": {
-                        "type": "object",
-                        "properties": {
-                          "type": {
-                            "enum": ["number", "boolean", "string"]
-                          },
-                          "constraints": {
-                            "type": "object",
-                            "properties": {}
-                          }
-                        },
-                        "required": ["type", "constraints"]
-                      },
-                      "acceptableInterpolationMethods": {
-                        "type": "array",
-                        "items": {
-                          "type": "object",
-                          "properties": {
-                            "name": {
-                              "type": "string"
-                            },
-                            "src": {
-                              "type": "string"
-                            },
-                            "displayName": {
-                              "type": "string"
-                            },
-                            "description": {
-                              "type": "string"
-                            },
-                            "icon": {
-                              "type": "string"
-                            }
-                          },
-                          "required": ["name", "displayName", "src"]
-                        }
-                      }
-                    },
-                    "required": [
-                      "name",
-                      "displayName",
-                      "value",
-                      "acceptableInterpolationMethods"
-                    ]
+                    "$ref": "#/definitions/reference"
                   }
                 },
                 "acceptableDrawingMethods": {
-                  "type": "array",
-                  "items": {
-                    "type": "object",
-                    "properties": {
-                      "name": {
-                        "type": "string"
-                      },
-                      "displayName": {
-                        "type": "string"
-                      },
-                      "icon": {
-                        "type": "string"
-                      },
-                      "description": {
-                        "type": "string"
-                      },
-                      "src": {
-                        "type": "string"
-                      }
-                    },
-                    "required": ["name", "displayName", "src"]
-                  }
+                  "$ref": "#/definitions/acceptable"
+                },
+                "acceptableSoundingMethods": {
+                  "$ref": "#/definitions/acceptable"
                 }
               },
               "required": [
                 "name",
                 "displayName",
                 "acceptablePropertyTypes",
+                "acceptableSoundingMethods",
                 "acceptableDrawingMethods"
               ]
+            }
+          },
+          "propertyTypes": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "displayName": {
+                  "type": "string"
+                },
+                "description": {
+                  "type": "string"
+                },
+                "icon": {
+                  "type": "string"
+                },
+                "value": {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "enum": ["number", "boolean", "string"]
+                    },
+                    "constraints": {
+                      "type": "object",
+                      "properties": {}
+                    }
+                  },
+                  "required": ["type", "constraints"]
+                },
+                "acceptableInterpolationMethods": {
+                  "$ref": "#/definitions/acceptable"
+                }
+              },
+              "required": [
+                "name",
+                "displayName",
+                "value",
+                "acceptableInterpolationMethods"
+              ]
+            }
+          },
+          "scripts": {
+            "type": "object",
+            "properties": {
+              "drawing": {
+                "$ref": "#/definitions/methods"
+              },
+              "sounding": {
+                "$ref": "#/definitions/methods"
+              },
+              "interpolation": {
+                "$ref": "#/definitions/methods"
+              }
             }
           }
         },
@@ -131,5 +113,51 @@
       }
     }
   },
-  "required": ["namespaces"]
+  "required": ["namespaces"],
+  "$defs": {
+    "methods": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "displayName": {
+            "type": "string"
+          },
+          "path": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "icon": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "acceptable": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "src": {
+            "$ref": "#/definitions/reference"
+          }
+        },
+        "required": ["src"]
+      }
+    },
+    "reference": {
+      "type": "object",
+      "properties": {
+        "pluginUrl": "string",
+        "namespace": "string",
+        "name": "string"
+      },
+      "required": ["namespace", "name"]
+    }
+  }
 }
