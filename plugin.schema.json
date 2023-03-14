@@ -1,0 +1,135 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.com/plugin.schema.json",
+  "title": "Plugin",
+  "description": "すべてのプラグインはこのスキーマで定義されます",
+  "type": "object",
+  "properties": {
+    "namespaces": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "entityTypes": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "displayName": {
+                  "type": "string"
+                },
+                "description": {
+                  "type": "string"
+                },
+                "icon": {
+                  "type": "string"
+                },
+                "acceptablePropertyTypes": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "type": "string"
+                      },
+                      "displayName": {
+                        "type": "string"
+                      },
+                      "description": {
+                        "type": "string"
+                      },
+                      "icon": {
+                        "type": "string"
+                      },
+                      "value": {
+                        "type": "object",
+                        "properties": {
+                          "type": {
+                            "enum": ["number", "boolean", "string"]
+                          },
+                          "constraints": {
+                            "type": "object",
+                            "properties": {}
+                          }
+                        },
+                        "required": ["type", "constraints"]
+                      },
+                      "acceptableInterpolationMethods": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "name": {
+                              "type": "string"
+                            },
+                            "src": {
+                              "type": "string"
+                            },
+                            "displayName": {
+                              "type": "string"
+                            },
+                            "description": {
+                              "type": "string"
+                            },
+                            "icon": {
+                              "type": "string"
+                            }
+                          },
+                          "required": ["name", "displayName", "src"]
+                        }
+                      }
+                    },
+                    "required": [
+                      "name",
+                      "displayName",
+                      "value",
+                      "acceptableInterpolationMethods"
+                    ]
+                  }
+                },
+                "acceptableDrawingMethods": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "type": "string"
+                      },
+                      "displayName": {
+                        "type": "string"
+                      },
+                      "icon": {
+                        "type": "string"
+                      },
+                      "description": {
+                        "type": "string"
+                      },
+                      "src": {
+                        "type": "string"
+                      }
+                    },
+                    "required": ["name", "displayName", "src"]
+                  }
+                }
+              },
+              "required": [
+                "name",
+                "displayName",
+                "acceptablePropertyTypes",
+                "acceptableDrawingMethods"
+              ]
+            }
+          }
+        },
+        "required": ["name", "entityTypes"]
+      }
+    }
+  },
+  "required": ["namespaces"]
+}
