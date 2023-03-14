@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://example.com/plugin.schema.json",
+  "$id": "https://raw.githubusercontent.com/coolwind0202/idobata-animation-schema/main/plugin.schema.json",
   "title": "Plugin",
   "description": "すべてのプラグインはこのスキーマで定義されます",
   "type": "object",
